@@ -95,7 +95,7 @@ When writing:
    - `[community]` — community practice, not first-party;
    - `[unverified]` — not confirmed in a running game.
 4. Name the namespace (Mojmap vs Yarn) when names could differ, and scope code to a version.
-5. Mark code that is illustrative as illustrative. This repo's code is never compiled.
+5. Treat code as illustrative unless its page says otherwise. Code blocks document an idea; they are not a build target of this repository.
 
 **Completion criterion:** every non-obvious claim has a link or a tag, and no API name was written from memory without a check.
 
@@ -212,6 +212,21 @@ rg -n 'TODO:|TBD|FIXME' -g '*.md'                 # unfinished text
 ```
 
 Also confirm by eye: template order, TL;DR present, `Проверено на` and `Источники` at the end, tables render (no broken pipes).
+
+### Code examples
+
+Code blocks are documentation, not a build target: no example in this repo is compiled or run by the documentation workflow itself. That does not lower the bar for accuracy — it moves the check earlier, to the source.
+
+When adding or changing code:
+
+1. **Pin the context.** State the Minecraft version and loader, because the same mixin differs between 1.20.1, 1.21.x, and 26.x.
+2. **Verify signatures before writing, not after.** Check the descriptor against the game/loader source, javadoc, or `javap -s`. A plausible-looking parameter list is the most common fabrication.
+3. **Mark uncertainty.** If a signature, method name, or parameter order is not confirmed, put `[unverified]` next to the example and say which part is uncertain.
+4. **Keep it minimal.** Show the annotation, the handler, and the one line that matters. Omit imports and boilerplate unless they carry the point.
+5. **Add a verification hint where it helps:** `javap -s`, IDE `Ctrl+Click`, `-Dmixin.debug.export=true` + `.mixin.out/class`.
+6. **If a sample was actually compiled or tested**, say so explicitly in the page and name the environment. Do not generalize that result to other samples.
+
+Update the README verification table when the status changes (for example, "examples compiled on 26.3" versus "not compiled"). The table describes the current state; this section describes the rule.
 
 ---
 
