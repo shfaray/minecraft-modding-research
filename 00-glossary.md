@@ -192,7 +192,7 @@
 
 **`Registry` / `Holder` / `HolderLookup.Provider`** — реестры и ссылки на их элементы. `Holder` позволяет ссылаться на элемент реестра до его инициализации; в 1.20.5+ реестры стали datapack-driven.
 
-**`ResourceLocation`** — идентификатор `namespace:path`. В 26.x остался, но окружение вокруг него (реестры, компоненты) заметно поменялось.
+**`ResourceLocation` / `Identifier`** — идентификатор `namespace:path`. В 1.21.11 Mojang переименовал класс в **`Identifier`** (дань уважения Yarn), поэтому в 26.x он называется `net.minecraft.resources.Identifier`; сигнатуры методов те же. Окружение вокруг него (реестры, компоненты) заметно поменялось.
 
 **`Level` / `BlockEntity`** — современные имена `World` и `TileEntity` (переименованы в 1.18).
 
