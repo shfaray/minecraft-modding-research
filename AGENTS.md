@@ -96,10 +96,10 @@ When writing:
    - `[draft]` — official docs still in draft;
    - `[community]` — community practice, not first-party;
    - `[unverified]` — not confirmed in a running game.
-
-Absence of a tag means the claim is backed by the cited source and the page's `Проверено на` block. Tags mark uncertainty only; there is no `[verified]` tag to add.
 4. Name the namespace (Mojmap vs Yarn) when names could differ, and scope code to a version.
 5. Treat code as illustrative unless its page says otherwise. Code blocks document an idea; they are not a build target of this repository.
+
+Absence of a tag means the claim is backed by the cited source and the page's `Проверено на` block. Tags mark uncertainty only; there is no `[verified]` tag to add.
 
 **Completion criterion:** every non-obvious claim has a link or a tag, and no API name was written from memory without a check.
 
