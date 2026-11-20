@@ -25,12 +25,12 @@
 | [`01-toolchain/1-build-systems.md`](01-toolchain/1-build-systems.md) | Loom, ForgeGradle, ModDevGradle, NeoGradle, RFG, Unimined | ✅ |
 | [`01-toolchain/2-ide-and-navigation.md`](01-toolchain/2-ide-and-navigation.md) | IntelliJ, Ravel, MixinMCP, jdx, Linkie, mappings.dev | ✅ |
 | [`01-toolchain/3-decompilers-bytecode.md`](01-toolchain/3-decompilers-bytecode.md) | Vineflower, CFR, Recaf, `javap`, ASM | ✅ |
-| [`01-toolchain/4-debug-and-diagnostics.md`](01-toolchain/4-debug-and-diagnostics.md) | `-Dmixin.debug.*`, MixinTrace, hotswap, spark, JFR | ⏳ |
+| [`01-toolchain/4-debug-and-diagnostics.md`](01-toolchain/4-debug-and-diagnostics.md) | `-Dmixin.debug.*`, MixinTrace, hotswap, spark, JFR | ✅ |
 | [`01-toolchain/5-content-and-pipeline.md`](01-toolchain/5-content-and-pipeline.md) | Datagen, Blockbench, KubeJS, NBT-редакторы, публикация | ✅ |
 | [`01-toolchain/6-tool-matrix.md`](01-toolchain/6-tool-matrix.md) | Сводная таблица всех инструментов | ✅ |
 | [`02-mixin-playbook.md`](02-mixin-playbook.md) | **Ядро:** как найти цель и выбрать способ инъекции | ✅ |
 | [`03-mixin-cookbook.md`](03-mixin-cookbook.md) | Рецепты инъекций: 1.20.1 / 1.21.x / 26.x | ✅ |
-| [`04-mixin-debugging.md`](04-mixin-debugging.md) | Почему миксин не применился и что с этим делать | ⏳ |
+| [`04-mixin-debugging.md`](04-mixin-debugging.md) | Почему миксин не применился и что с этим делать | ✅ |
 | [`05-version-changes/`](05-version-changes/00-index.md) | Эволюция API по эпохам | ⏳ |
 | [`06-loaders-and-mappings.md`](06-loaders-and-mappings.md) | Лоадеры, mappings, совместимость | ✅ |
 | [`07-sources.md`](07-sources.md) | Аннотированные первоисточники | ✅ |
