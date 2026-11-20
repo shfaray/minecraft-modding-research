@@ -96,6 +96,8 @@ When writing:
    - `[draft]` — official docs still in draft;
    - `[community]` — community practice, not first-party;
    - `[unverified]` — not confirmed in a running game.
+
+Absence of a tag means the claim is backed by the cited source and the page's `Проверено на` block. Tags mark uncertainty only; there is no `[verified]` tag to add.
 4. Name the namespace (Mojmap vs Yarn) when names could differ, and scope code to a version.
 5. Treat code as illustrative unless its page says otherwise. Code blocks document an idea; they are not a build target of this repository.
 
@@ -105,7 +107,7 @@ When writing:
 
 ## Writing rules
 
-- Follow the page template in `README.md` → "Конвенции страницы": H1 → breadcrumb → TL;DR callout → contents → sections → "Проверено на" → "Источники".
+- Follow the page template in `README.md` → "Конвенции страницы": H1 → breadcrumb → TL;DR callout → contents → sections → "Проверено на" → "Источники". Content pages must end with both blocks; meta pages (`README.md`, `AGENTS.md`, `00-glossary.md`, `07-sources.md`) may omit them because they navigate or aggregate instead of asserting new facts.
 - One concept, one home. Cross-link instead of duplicating. The glossary holds definitions; the playbook holds procedure; the cookbook holds examples.
 - Tables for comparisons, callouts (`> [!NOTE]`, `> [!WARNING]`) for traps, Mermaid only when a flow is genuinely non-linear.
 - Keep Russian prose natural and direct. Do not translate API names, flags, or file paths.
