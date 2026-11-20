@@ -108,7 +108,7 @@
 
 **Parchment** — набор параметров и javadoc'ов поверх Mojmap. После деобфускации 26.1 стал опциональным: имена параметров теперь приходят с игрой.
 
-**Access Widener (AW)** — файл Fabric, расширяющий доступ (`accessible`, `extendable`, `mutable`) к классам/методам/полям. Работает и на 26.x, потому что не связан с обфускацией.
+**Access Widener (AW)** — файл Fabric, расширяющий доступ (`accessible`, `extendable`, `mutable`) к классам/методам/полям. С Fabric Loader 0.18 и Loom 1.12 переименован в **class tweaker** (`*.classtweaker`, заголовок `classTweaker v1 official`), но имена свойств в build-скрипте и `fabric.mod.json` остались прежними. Работает и на 26.x, потому что не связан с обфускацией.
 
 **Access Transformer (AT)** — аналог AW в Forge/NeoForge.
 
@@ -150,7 +150,7 @@
 
 **Descriptor** — сигнатура в формате `Lowner;name(Lparam;)Lret;`. Используется в `@At(target = ...)`.
 
-**Injection point (`@At`)** — точка вставки: `HEAD`, `RETURN`, `TAIL`, `INVOKE`, `INVOKE_ASSIGN`, `FIELD`, `NEW`, `CONSTANT`, `JUMP`, `LOAD`, `STORE`.
+**Injection point (`@At`)** — точка вставки: `HEAD`, `RETURN`, `TAIL`, `INVOKE`, `INVOKE_ASSIGN`, `FIELD`, `NEW`, `CONSTANT`, `JUMP`, `LOAD`, `STORE`. `LOAD`/`STORE` работают только с `@ModifyVariable`.
 
 **Инъектор (injector)** — аннотация, описывающая, *что именно* сделать в точке: `@Inject`, `@Redirect`, `@ModifyArg`, `@ModifyVariable`, `@WrapOperation` и т.д.
 
