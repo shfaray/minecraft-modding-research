@@ -33,7 +33,7 @@
 | [`04-mixin-debugging.md`](04-mixin-debugging.md) | Почему миксин не применился и что с этим делать | ⏳ |
 | [`05-version-changes/`](05-version-changes/00-index.md) | Эволюция API по эпохам | ⏳ |
 | [`06-loaders-and-mappings.md`](06-loaders-and-mappings.md) | Лоадеры, mappings, совместимость | ✅ |
-| [`07-sources.md`](07-sources.md) | Аннотированные первоисточники | ⏳ |
+| [`07-sources.md`](07-sources.md) | Аннотированные первоисточники | ✅ |
 
 ## Как читать
 
