@@ -23,8 +23,8 @@
 | --- | --- | --- |
 | [`00-glossary.md`](00-glossary.md) | Термины: от `refmap` и `intermediary` до `@WrapOperation` | ✅ |
 | [`01-toolchain/1-build-systems.md`](01-toolchain/1-build-systems.md) | Loom, ForgeGradle, ModDevGradle, NeoGradle, RFG, Unimined | ⏳ |
-| [`01-toolchain/2-ide-and-navigation.md`](01-toolchain/2-ide-and-navigation.md) | IntelliJ, MixinMCP, jdx, Linkie, mappings.dev | ⏳ |
-| [`01-toolchain/3-decompilers-bytecode.md`](01-toolchain/3-decompilers-bytecode.md) | Vineflower, CFR, Recaf, `javap`, ASM | ⏳ |
+| [`01-toolchain/2-ide-and-navigation.md`](01-toolchain/2-ide-and-navigation.md) | IntelliJ, Ravel, MixinMCP, jdx, Linkie, mappings.dev | ✅ |
+| [`01-toolchain/3-decompilers-bytecode.md`](01-toolchain/3-decompilers-bytecode.md) | Vineflower, CFR, Recaf, `javap`, ASM | ✅ |
 | [`01-toolchain/4-debug-and-diagnostics.md`](01-toolchain/4-debug-and-diagnostics.md) | `-Dmixin.debug.*`, MixinTrace, hotswap, spark, JFR | ⏳ |
 | [`01-toolchain/5-content-and-pipeline.md`](01-toolchain/5-content-and-pipeline.md) | Datagen, Blockbench, KubeJS, NBT-редакторы, публикация | ⏳ |
 | [`01-toolchain/6-tool-matrix.md`](01-toolchain/6-tool-matrix.md) | Сводная таблица всех инструментов | ⏳ |
