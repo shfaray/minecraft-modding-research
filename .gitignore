@@ -33,3 +33,6 @@ runs/
 logs/
 crash-reports/
 .mixin.out/
+
+# Scratch verification lab (AGENTS.md protocol F). Never committed.
+tests/

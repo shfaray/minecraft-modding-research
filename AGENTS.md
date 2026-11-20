@@ -2,7 +2,7 @@
 
 Operating rules for AI agents working in this repository.
 
-This repo is a **documentation base**, not an application. There is no build, no tests, no source code to run. The Markdown files are the product. Every rule below exists to keep that product accurate, consistent, and cheap to extend.
+This repo is a **documentation base**, not an application. It has no build, tests, or runnable source in normal operation. The Markdown files are the product. Two on-request protocols ([F](#f-verify-code-examples-in-practice-on-request), [G](#g-audit-documentation-for-fabrications-on-request)) can create a temporary gitignored lab, but nothing from it is ever committed.
 
 **Languages:** documents are written in **Russian**; code, API names, flags, file paths, commit messages, and this file are **English**.
 
@@ -32,7 +32,7 @@ Paths are relative to the repository root. "Reach for it when" lists the branche
 | Path | What it holds | Reach for it when |
 | --- | --- | --- |
 | `README.md` | Public entry point: purpose, file table, key conclusions, page conventions, AI disclosure | Onboarding; updating the file table; changing public conventions |
-| `AGENTS.md` | This file: agent workflow, canon, verification | Any task starts here |
+| `AGENTS.md` | This file: agent workflow, canon, verification, on-request code/audit protocols | Any task starts here |
 | `00-glossary.md` | Terms: loaders, mappings, Mixin, injectors, data components, rendering, debugging | A term is ambiguous, or you need the canonical one-line definition |
 | `01-toolchain/1-build-systems.md` | Gradle plugins per era, Java/Gradle matrix, minimal build scripts, NeoForm/NFRT | Build fails; adding a project template; a plugin version changed |
 | `01-toolchain/2-ide-and-navigation.md` | IntelliJ, Minecraft Development, Ravel, MixinMCP, jdx, mapping browsers, navigation routes | Choosing an IDE tool; explaining how to find a class or method |
@@ -55,6 +55,8 @@ Paths are relative to the repository root. "Reach for it when" lists the branche
 | `LICENSE` | MIT | Legal only |
 
 If a fact lives in one of these files, **link to it** instead of restating it. When a fact is unavoidably repeated (version numbers, Java requirements), it belongs to the [Canon](#canon) and must match everywhere.
+
+`tests/` is deliberately absent from this map. It is a gitignored scratch lab created only under [protocol F](#f-verify-code-examples-in-practice-on-request); documents must never link to it.
 
 ---
 
@@ -169,6 +171,107 @@ Give the agent:
 - a completion criterion: every claim sourced or tagged.
 
 After it returns: review every risky fact, fix fabrications, run verification, then commit. A subagent's output is a draft, not a finished page.
+
+### F. Verify code examples in practice (on request)
+
+**Trigger:** the user explicitly asks to verify, compile, or test the examples. The default workflow treats code as illustrative; this protocol temporarily replaces that assumption for the requested scope.
+
+**Setup**
+
+1. Create `tests/` in the repository root. It is gitignored: never stage it, never link documentation to it, never ship it.
+2. Use **one Gradle project per (loader, Minecraft version) pair**: `tests/neoforge-26.3`, `tests/fabric-1.21.1`, `tests/forge-1.20.1`. Plugins, toolchains and mappings conflict across eras; separate builds keep each one honest.
+3. Start from the official MDK/template for that version (see `01-toolchain/1-build-systems.md`), pin exact versions, and use the matching toolchain: 8 for legacy, 16 for 1.17, 17 for 1.18–1.20.4, 21 for 1.20.5–1.21.11, 25 for 26.x.
+4. Copy the documented code **verbatim first**. Add only imports, package, and the minimal class shell. If it does not compile as written, that is a finding, not a reason to silently rewrite it.
+
+**Inventory**
+
+List every fenced block in scope: file, line, language, claimed version/loader, kind (mixin, plain Java, JSON, Gradle, shell, pseudo-code). `rg -n '^```' -g '*.md'` gives the candidates; record the table before touching any build.
+
+Classify each block:
+
+| Kind | Check |
+| --- | --- |
+| Java / mixin | Compiles against the pinned stack |
+| JSON (`pack.mcmeta`, models, recipes, `mixins.json`) | Parses, correct schema, loads in game where relevant |
+| Gradle / properties | Applies, task exists, build succeeds |
+| Shell | Runs in a clean checkout of the documented layout |
+| Pseudo-code | Cannot compile; mark `illustrative` in the doc |
+
+**Compile**
+
+- One source file per example, package `dev.docscheck.<doc>.<n>`; keep the documented names.
+- A mixin compiles only if its target, descriptor and `@Shadow` members exist on the pinned version. Compilation alone does not prove an `@At` target — see the behavior step.
+- `./gradlew build` per project. Record the exact task and outcome.
+
+**Behavior**
+
+Define the expected observation **before** running; a run without an expectation is not a test.
+
+- Pure logic → JUnit.
+- Game logic → GameTest (Fabric/NeoForge) or a small test mod with assertions.
+- Mixins → launch with `-Dmixin.debug.export=true -Dmixin.debug.countInjections=true`; assert the apply log line and the changed behavior. For GUI, verify manually or via the loader's screenshot/test hooks.
+- Destructive examples (world edits, drops, spawns) run on a disposable world only.
+
+**Fix loop**
+
+When a check contradicts the doc:
+
+1. Fix the **documentation**, not the harness, unless the harness is demonstrably wrong.
+2. Update the page's `Проверено на` and, if the status changed, the README verification table.
+3. Keep harness changes out of git history; commit only doc corrections.
+4. If an example cannot be exercised (needs a GPU, a player, a specific mod), mark it `[unverified]` with the reason instead of claiming success.
+
+**Report**
+
+Return a table: sample → version/loader → compile → behavior → doc action (none / fixed / tagged / blocked). Name the exact versions and commands used.
+
+**Done when:** every block in scope has a status (compiled, behavior verified, blocked, not applicable), and every divergence is either fixed in the docs or tagged with its reason.
+
+### G. Audit documentation for fabrications (on request)
+
+**Trigger:** the user asks to re-check correctness or to look for invented content. Scope is the files the user names; with no scope, audit all docs, high-risk sections first.
+
+**Priority order.** Spend effort where a model is most likely to invent:
+
+1. Exact signatures, descriptors and parameter order.
+2. Tool APIs: names of MCP tools, Gradle properties, flags, CLI commands.
+3. Versions, dates, Java requirements.
+4. Error strings and log lines.
+5. Paths, package names, file names.
+6. 26.x claims, then 1.21.x, then older eras.
+
+**Steps**
+
+1. Build a claim inventory per file: every testable statement becomes a row (claim, location, source, verdict).
+2. Verify against the source that owns the fact: game/loader source, javadoc, official docs, maven-metadata, release notes. Record the URL or file path and the access date.
+3. Assign one verdict:
+   - `confirmed` — matches the owner source;
+   - `wrong` — contradicts it;
+   - `stale` — was true for an older version;
+   - `unverifiable` — no primary source found;
+   - `community` — only community sources support it.
+4. Act on the verdict:
+   - `wrong` → fix the claim and every copy (`rg` the old value);
+   - `stale` → update or scope it to the version where it was true;
+   - `unverifiable` → narrow the claim and add `[unverified]`; never upgrade it to fact;
+   - `community` → keep the `[community]` tag and cite the source.
+5. Cross-check the [Canon](#canon) and the `Проверено на` blocks. Contradictions between pages are findings too.
+6. Run the mechanical checks under [Verification](#verification): links, CJK, whitespace, anchors.
+7. Commit fixes atomically: one commit per corrected claim or tight group, message names the wrong fact.
+
+**Anti-patterns**
+
+- Asking another model, or reading a blog that repeats the same page, is not verification. Only the owner source counts.
+- "It compiles" does not validate a mixin target. Use protocol F for behavior.
+- "It is already in this repository" is not evidence.
+- Adding a note on top of an obviously wrong name instead of fixing it.
+- Re-auditing everything on every run: scope first, then go deep.
+
+**Report**
+
+Return a table: claim → verdict → source → action → commit. State explicitly what remains `[unverified]` and why.
+
+**Done when:** every high-risk claim in scope has a verdict, every `wrong`/`stale` claim is fixed, every remaining uncertainty is tagged, and the mechanical checks pass.
 
 ---
 
