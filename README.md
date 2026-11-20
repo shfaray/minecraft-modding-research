@@ -31,7 +31,7 @@
 | [`02-mixin-playbook.md`](02-mixin-playbook.md) | **Ядро:** как найти цель и выбрать способ инъекции | ✅ |
 | [`03-mixin-cookbook.md`](03-mixin-cookbook.md) | Рецепты инъекций: 1.20.1 / 1.21.x / 26.x | ✅ |
 | [`04-mixin-debugging.md`](04-mixin-debugging.md) | Почему миксин не применился и что с этим делать | ✅ |
-| [`05-version-changes/`](05-version-changes/00-index.md) | Эволюция API по эпохам | ⏳ |
+| [`05-version-changes/`](05-version-changes/00-index.md) | Эволюция API по эпохам | ✅ |
 | [`06-loaders-and-mappings.md`](06-loaders-and-mappings.md) | Лоадеры, mappings, совместимость | ✅ |
 | [`07-sources.md`](07-sources.md) | Аннотированные первоисточники | ✅ |
 
