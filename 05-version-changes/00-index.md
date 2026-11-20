@@ -25,7 +25,7 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | Legacy Forge | 1.7.10–1.12.2 | 8 | Forge | ForgeGradle 1–3, RFG | MCP | [1-legacy-forge.md](1-legacy-forge.md) |
 | Flattening | 1.13–1.16.5 | 8 | Forge, Fabric | FG 3–5, Loom | MCP + Yarn | [2-flattening.md](2-flattening.md) |
-| Modern rename | 1.17–1.19.4 | 17 | Forge, Fabric, Quilt | FG 5/6, Loom | Mojmap + Yarn | [3-modern-rename.md](3-modern-rename.md) |
+| Modern rename | 1.17–1.19.4 | 16 → 17 | Forge, Fabric, Quilt | FG 5/6, Loom | Mojmap + Yarn | [3-modern-rename.md](3-modern-rename.md) |
 | Data components | 1.20.x | 17 → 21 | NeoForge, Forge, Fabric | FG 6, MDG, Loom | Mojmap + Yarn | [4-data-components.md](4-data-components.md) |
 | Render rewrite | 1.21.x | 21 | NeoForge, Fabric | MDG, NG, Loom | Mojmap + Yarn | [5-render-rewrite.md](5-render-rewrite.md) |
 | Unobfuscated | 26.1–26.3 | 25 | NeoForge, Fabric | MDG 2.x, NG 7.x, Loom 1.14+ | нет (имена Mojang) | [6-unobfuscated.md](6-unobfuscated.md) |
@@ -46,8 +46,8 @@
 | 1.14.4 | 2019-07-19 | 8 | `DeferredRegister`, `RegistryObject`, `IRecipe` |
 | 1.15.2 | 2020-01-21 | 8 | `MatrixStack`, `RenderType`, рефакторинг рендера |
 | 1.16.5 | 2021-01-15 | 8 | Финал Java 8; последняя версия с MCP по умолчанию |
-| 1.17.1 | 2021-07-06 | 17 | **Официальные mappings Mojang**, `PoseStack`, `BlockEntity` |
-| 1.18.2 | 2022-02-28 | 17 | `Level`, `BlockEntity`, `ChunkAccess`; Quilt |
+| 1.17.1 | 2021-07-06 | 16 | **Официальные mappings Mojang**, `Level`, `BlockEntity`, `PoseStack` |
+| 1.18.2 | 2022-02-28 | 17 | Worldgen, `saveAdditional`, `Holder` |
 | 1.19.2 | 2022-08-05 | 17 | `Holder`, `Registry`, чат-компоненты |
 | 1.19.4 | 2023-03-14 | 17 | Последняя версия перед 1.20 |
 | 1.20.1 | 2023-06-12 | 17 | Последняя «общая» версия Forge/NeoForge; `GuiGraphics` |
@@ -74,7 +74,7 @@ timeline
     title Водоразделы моддинга
     2014 : 1.7.10 — Forge + MCP
     2018 : 1.13 — Flattening
-    2021 : 1.17 — Официальные mappings, Java 17
+    2021 : 1.17 — Официальные mappings, Java 16
     2023 : 1.20.1 — Последняя общая Forge/NeoForge
     2023 : 1.20.2 — NeoForge отделяется
     2024 : 1.20.5 — Data Components, Java 21

@@ -194,7 +194,7 @@
 
 **`ResourceLocation` / `Identifier`** — идентификатор `namespace:path`. В 1.21.11 Mojang переименовал класс в **`Identifier`** (дань уважения Yarn), поэтому в 26.x он называется `net.minecraft.resources.Identifier`; сигнатуры методов те же. Окружение вокруг него (реестры, компоненты) заметно поменялось.
 
-**`Level` / `BlockEntity`** — современные имена `World` и `TileEntity` (переименованы в 1.18).
+**`Level` / `BlockEntity`** — современные имена `World` и `TileEntity` (переименованы в 1.17 вместе с переходом Forge на Mojmap).
 
 ---
 
